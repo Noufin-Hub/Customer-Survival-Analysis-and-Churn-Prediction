@@ -1,234 +1,395 @@
-# Customer Survival Analysis and Churn Prediction
+# 📊 Customer Survival Analysis and Telecom Customer Churn Prediction
 
-App: https://churn-prediction-app.herokuapp.com/
+An end-to-end Machine Learning and Survival Analysis project that predicts customer churn, explains the prediction using Explainable AI (SHAP), estimates Customer Lifetime Value (CLTV), and visualizes customer survival probability through an interactive Flask web application.
 
-Customer attrition, also known as customer churn, customer turnover, or customer defection, is the loss of clients or customers.
+> Updated for **Python 3.14**, **Flask 3.x**, **scikit-learn 1.9**, **SHAP 0.52**, and **lifelines 0.30**.
 
-Telephone service companies, Internet service providers, pay TV companies, insurance firms, and alarm monitoring services, often use customer attrition analysis and customer attrition rates as one of their key business metrics because the cost of retaining an existing customer is far less than acquiring a new one. Companies from these sectors often have customer service branches which attempt to win back defecting clients, because recovered long-term customers can be worth much more to a company than newly recruited clients.
+---
 
-Predictive analytics use churn prediction models that predict customer churn by assessing their propensity of risk to churn. Since these models generate a small prioritized list of potential defectors, they are effective at focusing customer retention marketing programs on the subset of the customer base who are most vulnerable to churn.
+## 🚀 Live Demo
 
-In this project I aim to perform customer survival analysis and build a model which can predict customer churn. I also aim to build an app which can be used to understand why a specific customer would stop the service and to know his/her expected lifetime value.  
+Coming Soon
 
-## Final Customer Churn Prediction App
-<img src=https://github.com/archd3sai/Customer-Survival-Analysis-and-Churn-Prediction/blob/master/app-pic.png>
+---
 
-## Project Organization
+# 📌 Overview
+
+Customer churn is one of the most important business metrics for telecom companies. Acquiring a new customer is significantly more expensive than retaining an existing one.
+
+This project helps telecom companies identify customers who are likely to leave, understand *why* they are likely to churn, estimate how long they may remain customers, and calculate their expected Customer Lifetime Value (CLTV).
+
+Unlike traditional churn prediction projects, this application combines:
+
+- Machine Learning
+- Survival Analysis
+- Explainable AI
+- Interactive Web Dashboard
+
+into one complete solution.
+
+---
+
+# ✨ Features
+
+- 🔹 Telecom Customer Churn Prediction
+- 🔹 Customer Survival Analysis
+- 🔹 Hazard Curve Visualization
+- 🔹 Survival Probability Curve
+- 🔹 Customer Lifetime Value (CLTV)
+- 🔹 SHAP Explainability
+- 🔹 Feature Importance
+- 🔹 Partial Dependence Analysis
+- 🔹 Gauge Meter Risk Visualization
+- 🔹 Modern Flask Web Application
+- 🔹 Python 3.14 Compatible
+
+---
+
+# 🖥️ Application Preview
+
+> Replace this image after redesigning the UI.
+
 ```
-.
-├── Images/                             : contains images
-├── static/                             : plots to show gauge chart, hazard and survival curve, shap values in Flask App 
+app-pic.png
+```
+
+---
+
+# 🏗️ Project Structure
+
+```text
+Customer-Survival-Analysis-and-Churn-Prediction/
+
+│
+├── Images/
+│
+├── static/
+│   ├── css/
+│   ├── js/
 │   └── images/
-│       ├── hazard.png
-│       ├── surv.png
-│       ├── shap.png
-│       └── new_plot.png
-├── templates/                          : contains html template for flask app
+│
+├── templates/
 │   └── index.html
-├── Customer Survival Analysis.ipynb    : Survival Analysis kaplan-Meier curve, log-rank test and Cox-proportional Hazard model
-├── Exploratory Data Analysis.ipynb     : Data Analysis to understand customer data
-├── Churn Prediction Model.ipynb        : Random Forest model to predict customer churn
-├── app.py                              : Flask App
-├── app-pic.png                         : Final App image  
-├── explainer.bz2                       : Shap Explainer
-├── model.pkl                           : Random Forest model
-├── survivemodel.pkl                    : Cox-proportional Hazard model
-├── requirements.txt                    : requirements to run this model
-├── Procfile                            : procfile for app deployment
-├── LICENSE.md                          : MIT License
-└── README.md                           : Report
+│
+├── Exploratory Data Analysis.ipynb
+├── Customer Survival Analysis.ipynb
+├── Churn Prediction Model.ipynb
+│
+├── app.py
+│
+├── model.pkl
+├── survivemodel.pkl
+├── explainer.bz2
+│
+├── requirements.txt
+├── Procfile
+├── README.md
+└── LICENSE
 ```
 
-## Customer Survival Analysis
+---
+
+# 📊 Dataset
+
+**IBM Telco Customer Churn Dataset**
+
+The dataset contains customer information including:
+
+- Gender
+- Senior Citizen
+- Partner
+- Dependents
+- Tenure
+- Phone Service
+- Internet Service
+- Contract Type
+- Payment Method
+- Monthly Charges
+- Total Charges
+- Churn Status
 
-**Survival Analysis:** 
-Survival analysis is generally defined as a set of methods for analyzing data where the outcome variable is the time until the occurrence of an event of interest. The event can be death, occurrence of a disease, marriage, divorce, etc. The time to event or survival time can be measured in days, weeks, years, etc.
+---
 
-For example, if the event of interest is heart attack, then the survival time can be the time in years until a person develops a heart attack.
+# 🔬 Project Workflow
 
-**Objective:**
-The objective of this analysis is to utilize non-parametric and semi-parametric methods of survival analysis to answer the following questions.
-- How the likelihood of the customer churn changes over time?
-- How we can model the relationship between customer churn, time, and other customer characteristics?
-- What are the significant factors that drive customer churn?
-- What is the survival and Hazard curve of a specific customer?
-- What is the expected lifetime value of a customer?
+```
+Dataset
+      │
+      ▼
+Data Cleaning
+      │
+      ▼
+Exploratory Data Analysis
+      │
+      ▼
+Feature Engineering
+      │
+      ▼
+Random Forest Model
+      │
+      ▼
+Hyperparameter Tuning
+      │
+      ▼
+Customer Churn Prediction
+      │
+      ├────────────► SHAP Explainability
+      │
+      └────────────► Survival Analysis
+                          │
+                          ▼
+                    Customer Lifetime Value
+                          │
+                          ▼
+                    Flask Web Application
+```
 
-**Kaplan-Meier Survival Curve:**
+---
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/SurvivalCurve.png" width="400" height="300">
-</p>
+# 📈 Survival Analysis
 
-From above graph, we can say that
-- AS expected, for telcom, churn is relatively low. The company was able to retain more than 60% of its customers even after 72 months.
-- There is a constant decrease in survival probability probability between 3-60 months.
-- After 60 months or 5 years, survival probability decreases with a higher rate. 
+The project performs Survival Analysis using the **Cox Proportional Hazards Model**.
 
-**Log-Rank Test:** 
+It answers questions such as:
 
-Log-rank test is carried out to analyze churning probabilities group wise and to find if there is statistical significance between groups. The plots show survival curve group wise.
+- How does churn probability change over time?
+- Which customer characteristics increase churn risk?
+- What is the expected customer lifetime?
+- What is the cumulative hazard over time?
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/gender.png" width="250" height="200"/> 
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/Senior%20Citizen.png" width="250" height="200"/>
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/partner_1.png" width="250" height="200"/> 
-</p>
+The application dynamically generates:
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/dependents.png" width="250" height="200"/> 
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/phoneservice.png" width="250" height="200"/>
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/MultipleLines.png" width="250" height="200"/> 
-</p>
+- Survival Curve
+- Hazard Curve
+- Customer Lifetime Value (CLTV)
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/InternetService.png" width="250" height="200"/> 
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/OnlineSecurity.png" width="250" height="200"/> 
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/OnlineBackup.png" width="250" height="200"/> 
-</p>
+---
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/DeviceProtection.png" width="250" height="200"/> 
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/TechSupport.png" width="250" height="200"/>
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/Contract.png" width="250" height="200"/> 
-</p>
+# 🤖 Machine Learning
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/StreamingMovies.png" width="250" height="200"/>
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/paymentmethod.png" width="250" height="200"/> 
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/PaperlessBilling.png" width="250" height="200"/>
-</p>
+The churn prediction model uses a **Random Forest Classifier**.
 
-From above graphs we can conclude following:
-- Customer's Gender and the phone service type are not indictive features and their p value of log rank test is above threshold value 0.05.
-- If customer is young and has a family, he or she is less likely to churn. The reason might be the busy life, more money or another factors.
-- If customer is not enrolled in services like online backup, online security, device protection, tech support, streaming Tv and streaming movies even though having active internet service, the survival probability is less.
-- The company should traget customers who opt for internet service as their survival probability constantly descreases. Also, Fiber Optilc type of Internet Service is costly and fast compared to DSL and this might be the reason of higher customer churning. 
-- More offers should be given to customers who opt for month-to-month contract and company should target customers to subscribe for long-term service. 
-- If customer's paying method is automatic, he or she is less likely to churn. The reason is in the case of electronic check and mailed check, a customer has to make an effort to pay and it takes time.
+### Training Pipeline
 
-**Survival Regression:**
-I use cox-proportional hazard model to perform survival regression analysis on customer data. This model is used to relate several risk factors or exposures simultaneously to survival time. In a Cox proportional hazards regression model, the measure of effect is the hazard rate, which is the risk or probability of suffering the event of interest given that the participant has survived up to a specific time. The model fits the data well and the coefficients are shown below.
+- Data Cleaning
+- Label Encoding
+- Train/Test Split
+- Class Imbalance Handling
+- Hyperparameter Tuning
+- Cross Validation
+- Model Evaluation
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Survival-Analysis-and-Churn-Prediction/blob/master/Images/Survival-analysis.png" width="750" height="500"/>
-</p>
+---
 
-Using this model we can calculate the survival curve and hazard curve of any customer as shown below. These plots are useful to know the remaining life of a customer. 
+# ⚖️ Handling Class Imbalance
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Survival-Analysis-and-Churn-Prediction/blob/master/Images/survival.png" width="400" height="300"/>
-<img src="https://github.com/archd3sai/Customer-Survival-Analysis-and-Churn-Prediction/blob/master/Images/hazard.png" width="400" height="300"/>
-</p>
+The telecom dataset contains an imbalanced target distribution.
 
-**Customer Lifetime Value:**
+The project uses:
 
-To calculate customer lifetime value, I would multiply the Monthly charges the customer is paying to Telcom and the expected life time of the customer.
+- Class Weighting
+- GridSearchCV
+- Cross Validation
 
-I utilize the survival function of a customer to calculate its expected life time. I would like to be little bit conservative and consider the customer is churned when the survival probability of him is 10%.
+to improve recall and F1-score while minimizing false negatives.
 
-## Customer Churn Prediction
-I aim to implement a machine learning model to accurately predict if the customer will churn or not.
+---
 
-### Analysis
+# 📊 Model Performance
 
-**Churn and Tenure Relationship:**
+| Metric | Score |
+|---------|--------|
+| ROC-AUC | 0.85 |
+| F1 Score | 0.62 |
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/tenure-churn.png" width="600" height="300"/>
-</p>
+---
 
-- As we can see the higher the tenure, the lesser the churn rate. This tells us that the customer becomes loyal with the tenure.
+# 🔍 Explainable AI
 
-<br />
+Understanding **why** a customer is predicted to churn is as important as the prediction itself.
 
-**Tenure Distrbution by Various Services:**
+This project includes:
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/tenure-dist.png" width="340" height="250"/>
-</p>
+### SHAP (SHapley Additive Explanations)
 
-- When the customers are new they do not opt for various services and their churning rate is very high. This can be seen in above plot for Streaming Movies and this holds true for all various services.
+Explains:
 
-<br />
+- Which features increased churn probability
+- Which features reduced churn probability
 
-**Internet Service By Contract Type:**
+### Permutation Importance
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/internetservice-contract.png" width="360" height="250"/>
-</p>
+Ranks the importance of features by measuring the decrease in model performance after shuffling feature values.
 
-- Many of the people of who opt for month-to-month Contract choose Fiber optic as Internet service and this is the reason for higher churn rate for fiber optic Internet service type.
+### Partial Dependence Plots
 
-<br />
+Implemented using **scikit-learn's PartialDependenceDisplay** to visualize the effect of individual features on churn probability.
 
-**Payment method By Contract Type:**
+---
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/payment-contract.png" width="500" height="250"/>
-</p>
+# 📉 Customer Lifetime Value (CLTV)
 
-- People having month-to-month contract prefer paying by Electronic Check mostly or mailed check. The reason might be short subscription cancellation process compared to automatic payment.
+Customer Lifetime Value is estimated using the survival function.
 
-<br />
+```
+CLTV = Expected Customer Lifetime × Monthly Charges
+```
 
-**Monthly Charges:**
+The expected lifetime is calculated until the survival probability falls below **10%**.
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/monthlycharges.png" width="300" height="220"/>
-</p>
+---
 
-- As we can see the customers paying high monthly fees churn more.
+# 🌐 Flask Web Application
 
-<br />
+The web application allows users to:
 
-### Modelling
+- Enter customer information
+- Predict churn probability
+- View customer risk level
+- Understand prediction using SHAP
+- View Hazard Curve
+- View Survival Curve
+- Estimate Customer Lifetime Value
 
-For the modelling, I will use tress based Ensemble method as we do not have linearity in this classification problem. Also, we have a class imbalance of 1:3 and to combat it I will assign class weightage of 1:3 which means false negatives are 3 times costlier than false positives. I built a model on 80% of data and validated model on remaining 20% of data keeping in mind that I do not have data leakage. The random forest model has many hyperparameters and I tuned them using Grid Search Cross Validation while making sure that I do not overfit.
+---
 
-The final model resulted in 0.62 F1 score and 0.85 ROC-AUC. The resulting plots can be seen below.
+# 🛠️ Tech Stack
 
-<p align="center">
-<img src="https://github.com/archd3sai/Customer-Survival-Analysis-and-Churn-Prediction/blob/master/Images/model_1.png" width="600" height="300"/>
-<img src="https://github.com/archd3sai/Customer-Survival-Analysis-and-Churn-Prediction/blob/master/Images/model_feat_imp.png" width="600" height="400"/>
+### Programming
 
-</p>
+- Python 3.14
 
-From the feature importance plot, we can see which features govern the customer churn.
+### Machine Learning
 
-### Explainability
+- scikit-learn
+- SHAP
+- lifelines
+- NumPy
+- Pandas
+- SciPy
 
-We can explain and understand the Random forest model using explainable AI modules such as Permutation Importance, Partial Dependence plots and Shap values.
+### Visualization
 
-1. Permutation Importance shows feature importance by randomly shuffling feature values and measuring how much it degrades our performance.
+- Matplotlib
+- Seaborn
 
-<p align="center">
-<img src=https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/eli51.png height=250 width=200>
-<img src=https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/eli52.png height=130 width=200> 
-</p>
+### Backend
 
-2. Partial dependence plot is used to see how churning probability changes across the range of particular feature. For example, in below graph of tenure group, the churn probability decreases at a higher rate if a person is in tenure group 2 compared to 1.
+- Flask
 
-<p align="center">
-<img src=https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/pdp_tenure.png height=250 width=400>
-<img src=https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/pdp_contract.png height=250 width=400> 
-</p>
+### Frontend
 
-<p align="center">
-<img src=https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/pdp_monthly_charges.png height=250 width=400>
-<img src=https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/pdp_total_charges.png height=250 width=400> 
-</p>
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
 
-3. Shap values (SHapley Additive exPlanations) is a game theoretic approach to explain the output of any machine learning model. In below plot we can see that why a particual customer's churning probability is less than baseline value and which features are causing them.
+---
 
-![](https://github.com/archd3sai/Customer-Churn-Analysis-and-Prediction/blob/master/Images/shap.png)
+# 📦 Installation
 
-## Flask App
+Clone the repository
 
-I saved the final tuned Random Forest model and deployed it using Flask web app. Flask is a micro web framework written in Python.  It is designed to make getting started quick and easy, with the ability to scale up to complex applications. I saved the shap value explainer tuned using random forest model to show shap plots in app. I have also utilized the cox-proportional hazard model to show survival curve and hazard curve, and to calculate expected customer lifetime value. 
+```bash
+git clone https://github.com/yourusername/Customer-Survival-Analysis-and-Churn-Prediction.git
+```
 
-The final app shows churning probability, gauge chart of how severe a customer is and shap values based on customer's data. The final app layout can be seen above.  
+Move into the project
 
+```bash
+cd Customer-Survival-Analysis-and-Churn-Prediction
+```
 
+Create a virtual environment
 
+```bash
+python -m venv .venv
+```
 
+Activate it
+
+Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+Linux/macOS
+
+```bash
+source .venv/bin/activate
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application
+
+```bash
+python app.py
+```
+
+Open
+
+```
+http://127.0.0.1:5000
+```
+
+---
+
+# 🔄 Modernization
+
+This project has been upgraded from the original implementation to support the latest Python ecosystem.
+
+### Updates
+
+- ✅ Python 3.14 Compatibility
+- ✅ Flask 3.x Support
+- ✅ scikit-learn 1.9 Compatibility
+- ✅ SHAP 0.52 Compatibility
+- ✅ lifelines 0.30 Compatibility
+- ✅ Updated Random Forest Parameters
+- ✅ Removed Deprecated APIs
+- ✅ Replaced Deprecated PDPBox with scikit-learn Partial Dependence
+- ✅ Updated Dependency Management
+- ✅ Modern Flask Application Structure
+
+---
+
+# 🚀 Future Improvements
+
+- Docker Support
+- XGBoost Model
+- LightGBM Model
+- Deep Learning Model
+- User Authentication
+- Cloud Deployment
+- REST API
+- Interactive SHAP Dashboard
+- Real-time Prediction
+- Database Integration
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+# 👨‍💻 Author
+
+**Noufin P**
+
+- MCA Graduate
+- Aspiring Data Scientist
+- AI & Applied Data Science Enthusiast
+
+LinkedIn: (https://www.linkedin.com/in/noufinp)
+
+GitHub: (https://github.com/Noufin-Hub)
+
+---
